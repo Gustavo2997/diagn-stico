@@ -1,0 +1,80 @@
+<div class="min-h-screen flex items-center justify-center bg-gray-900 py-6">
+    <div class="w-full max-w-lg bg-white rounded-lg shadow-lg p-8">
+        <h1 class="text-3xl font-bold mb-6 text-center text-gray-800">DIAGNÓSTICO DEL PROYECTO</h1>
+        <form [formGroup]="proyectoForm" (ngSubmit)="onSubmit()">
+            <div class="grid grid-cols-1 gap-4">
+                <div>
+                    <label class="block text-gray-700"> Cliente </label>
+                    <input
+                        class="w-full mt-1 p-2 border border-gray-300 rounded focus:outline-none focus:border-indigo-500"
+                        formControlName="cliente" type="text" />
+                    <div *ngIf="proyectoForm.get('cliente')?.invalid && proyectoForm.get('cliente')?.touched" class="text-red-600">
+                        Cliente es requerido y solo permite letras A-Z.
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-gray-700">Tipo de Proyecto</label>
+                    <select
+                        class="w-full mt-1 p-2 border border-gray-300 rounded focus:outline-none focus:border-indigo-500"
+                        formControlName="tipoProyecto">
+                        <option value="">Seleccione un tipo de proyecto</option>
+                        <option value="unifamiliar">Unifamiliar</option>
+                        <option value="multifamiliar">Multifamiliar</option>
+                        <option value="comercial">Comercial</option>
+                    </select>
+                    <div *ngIf="proyectoForm.get('tipoProyecto')?.invalid && proyectoForm.get('tipoProyecto')?.touched" class="text-red-600">
+                        Tipo de Proyecto es requerido.
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-gray-700"> Área </label>
+                    <input
+                        class="w-full mt-1 p-2 border border-gray-300 rounded focus:outline-none focus:border-indigo-500"
+                        formControlName="area" type="text" />
+                    <div *ngIf="proyectoForm.get('area')?.invalid && proyectoForm.get('area')?.touched" class="text-red-600">
+                        Área es requerido y solo permite letras A-Z.
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-gray-700"> Piso </label>
+                    <select
+                        class="w-full mt-1 p-2 border border-gray-300 rounded focus:outline-none focus:border-indigo-500"
+                        formControlName="piso">
+                        <option value="">Seleccione un piso</option>
+                        <option *ngFor="let piso of pisos" [value]="piso">{{ piso }}</option>
+                    </select>
+                    <div *ngIf="proyectoForm.get('piso')?.invalid && proyectoForm.get('piso')?.touched" class="text-red-600">
+                        Piso es requerido.
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-gray-700"> Pais </label>
+                    <select
+                        class="w-full mt-1 p-2 border border-gray-300 rounded focus:outline-none focus:border-indigo-500"
+                        formControlName="pais">
+                        <option value="">Seleccione un país</option>
+                        <option *ngFor="let pais of paises" [value]="pais">{{ pais }}</option>
+                    </select>
+                    <div *ngIf="proyectoForm.get('pais')?.invalid && proyectoForm.get('pais')?.touched" class="text-red-600">
+                        País es requerido.
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-gray-700"> Dirección </label>
+                    <input
+                        class="w-full mt-1 p-2 border border-gray-300 rounded focus:outline-none focus:border-indigo-500"
+                        formControlName="direccion" type="text" />
+                    <div *ngIf="proyectoForm.get('direccion')?.invalid && proyectoForm.get('direccion')?.touched" class="text-red-600">
+                        Dirección es requerida.
+                    </div>
+                </div>
+            </div>
+            <div class="mt-6 flex justify-between">
+                <button class="bg-indigo-600 hover:bg-indigo-800 text-white font-bold py-2 px-4 rounded"
+                    type="submit">Continuar</button>
+                <button class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded"
+                    type="button" routerLink="/empleados">Cancelar</button>
+            </div>
+        </form>
+    </div> 
+</div>

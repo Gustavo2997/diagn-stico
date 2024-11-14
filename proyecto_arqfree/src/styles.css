@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.bg-gradient-construction {
+  background: linear-gradient(135deg, #B2F7EF 0%, #EFFAB4 100%);
+}
+
+.bg-lime-green {
+  background-color: #00DD00;
+}
+
+.hover\:bg-lime-green-dark:hover {
+  background-color: #00BB00;
+}
